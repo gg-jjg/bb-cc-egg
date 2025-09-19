@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="bb-cc-egg"
+run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=608
+window/size/viewport_height=672
 
 [dotnet]
 
