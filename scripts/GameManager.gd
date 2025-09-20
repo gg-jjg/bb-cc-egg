@@ -1,12 +1,12 @@
 extends Node2D
 
 var score = 0
-@onready var scoreText = $RichTextLabel
+@onready var scoreText = $Score
 
 func addScore(points):
 	score += points #increment score
-	print("Score: " + str(score))
-	scoreText.text = "Score: " + str(score) #edit the score text to show new score
+	#print("Score: " + str(score))
+	scoreText.text = "[color=black]Score: " + str(score) #edit the score text to show new score
 
 func _physics_process(delta):
 	#reset the game if space is pressed (mostly to help with debugging until proper game over)
