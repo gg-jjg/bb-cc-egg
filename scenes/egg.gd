@@ -1,21 +1,26 @@
 extends StaticBody2D
 
-@onready var gm = $"../GameManager"
-var stages = [1,1,1,1,1,1,1]#[5,3,3,2,2,2,1]
-var stage = 0
-var crackCount = 0
+@onready var gm = $"../GameManager" #get reference to the game manager
+var stages = [1,1,1,1,1,1,1]#[5,3,3,2,2,2,1] #set up stages, each determines how many hits before going to the next.
+var stage = 0 #stage (index of stages)
+var crackCount = 0 
 
 func _ready():
 	
 	pass
-	
+
+#slowly grow if egg is less than full size
+#func _physics_process(delta):
+	#if scale < Vector2.ONE:
+		#scale += Vector2(0.0002,0.0002)
+		
 func score():
-	gm.addScore(1)
+	gm.addScore(1) #increment score for game manager
 	crackCount+=1
-	if stage == stages.size():
+	if stage == stages.size(): #avoid getting an index out of range
 		return
-	if crackCount >= stages[stage]:
+	if crackCount >= stages[stage]: #if we've hit the egg enough, move on the the next stage.
 		print("Stage: " + str(stage))
-		stage +=1
-		crackCount=0
-		scale -= Vector2(0.14,0.14)
+		stage +=1 #go to the next stage(index of stages)
+		crackCount=0 #reset the hit count
+		scale -= Vector2(0.14,0.14) #shrink the egg
