@@ -9,5 +9,7 @@ radius = 84.0536
 position = Vector2(302, 298)
 script = ExtResource("1_b3ye3")
 
+[node name="Egg_Sprite" type="Sprite2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hc134")
