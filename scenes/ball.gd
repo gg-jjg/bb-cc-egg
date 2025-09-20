@@ -1,6 +1,6 @@
 extends PhysicsBody2D
 
-var speed = 5
+var speed = 1
 var dir : Vector2 = Vector2(1.0, 0.0)
 
 func _physics_process(delta):
@@ -8,8 +8,10 @@ func _physics_process(delta):
 	if collision:
 		if collision.get_collider().name == "Egg":
 			collision.get_collider().score()
+			speed +=0.1
 		dir = dir.bounce(collision.get_normal())
 		#dir = collision.get_normal()+dir/2
+
 	
 func _bounce(dir):
 	move_and_collide(dir*speed)
