@@ -5,9 +5,26 @@ var stages = [1,1,1,1,1,1,1]#[5,3,3,2,2,2,1] #set up stages, each determines how
 var stage = 0 #stage (index of stages)
 var crackCount = 0 
 
-func _ready():
+# Array that holds all colors of egg sprites
+var egg_sprites = [
+	("res://assets/sprites/eggs/Black.png"),
+	("res://assets/sprites/eggs/Blue.png"),
+	("res://assets/sprites/eggs/Cyan.png"),
+	("res://assets/sprites/eggs/Green.png"),
+	("res://assets/sprites/eggs/Orange.png"),
+	("res://assets/sprites/eggs/Purple.png"),
+	("res://assets/sprites/eggs/Red.png"),
+	("res://assets/sprites/eggs/White.png"),
+	("res://assets/sprites/eggs/Yellow.png")
+]
+
+func _rnd_egg_color():
+	var rnd_i = randi() % egg_sprites.size()
 	
-	pass
+	$Egg_Sprite.texture = load(egg_sprites[rnd_i])
+
+func _ready():
+	_rnd_egg_color()
 
 #slowly grow if egg is less than full size
 #func _physics_process(delta):
@@ -15,6 +32,7 @@ func _ready():
 		#scale += Vector2(0.0002,0.0002)
 		
 func score():
+	_rnd_egg_color()
 	gm.addScore(1) #increment score for game manager
 	crackCount+=1
 	if stage == stages.size(): #avoid getting an index out of range
