@@ -7,7 +7,7 @@ func _ready():
 	#all this does is delete the 'chick' after 2 seconds so it doesn't take up memory off-screen
 	var timer := Timer.new()
 	add_child(timer)
-	timer.wait_time=2.0
+	timer.wait_time=4.0
 	timer.start()
 	timer.timeout.connect(_on_timer_timeout)
 
