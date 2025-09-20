@@ -2,7 +2,7 @@ extends PhysicsBody2D
 
 var speed = 100 #initial speed of the ball
 var speedMod = 5 #speed modifier, used for logarithmic speed increase
-var dir : Vector2 = Vector2(1.0, 0.0) #set initial direction, otherwise the ball will just sit there when you press play
+var dir : Vector2 = Vector2(1.0, randf_range(-0.3, 0.3)) #set initial direction, rand y
 
 var chick = preload("res://scenes/chick.tscn")
 
