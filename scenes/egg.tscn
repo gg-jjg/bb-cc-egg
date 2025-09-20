@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://bw0goy5lad78s"]
 
 [ext_resource type="Script" path="res://scripts/egg.gd" id="1_b3ye3"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hc134"]
-radius = 84.0536
+[ext_resource type="Texture2D" uid="uid://clnfgkbokqihe" path="res://assets/sprites/eggs/White.png" id="2_pjtbm"]
 
 [node name="Egg" type="StaticBody2D"]
 position = Vector2(302, 298)
 script = ExtResource("1_b3ye3")
 
 [node name="Egg_Sprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_pjtbm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_hc134")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(4, -82, 13, -79, 26, -72, 35, -64, 46, -52, 61, -23, 67, -2, 70, 16, 70, 38, 61, 62, 51, 71, 38, 80, 23, 85, 7, 89, -10, 89, -26, 85, -43, 76, -62, 59, -68, 46, -71, 28, -67, 4, -61, -19, -52, -39, -44, -52, -31, -68, -18, -76, -5, -82)

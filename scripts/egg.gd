@@ -18,9 +18,9 @@ var egg_sprites = [
 	("res://assets/sprites/eggs/Yellow.png")
 ]
 
+# Set egg texture to a random egg color.
 func _rnd_egg_color():
-	var rnd_i = randi() % egg_sprites.size()
-	
+	var rnd_i = randi() % egg_sprites.size() 
 	$Egg_Sprite.texture = load(egg_sprites[rnd_i])
 
 func _ready():
