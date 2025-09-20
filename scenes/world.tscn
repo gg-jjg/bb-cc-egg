@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw8cds2jy2281"]
+[gd_scene load_steps=11 format=3 uid="uid://cw8cds2jy2281"]
 
 [ext_resource type="Texture2D" uid="uid://b262bh247wnvw" path="res://assets/sprites/ground_tiles.png" id="1_fukm1"]
 [ext_resource type="Texture2D" uid="uid://b6g40mh7da3ml" path="res://assets/sprites/objects.png" id="2_j7kdx"]
 [ext_resource type="PackedScene" uid="uid://d02on81vw2thg" path="res://scenes/characters/paddle.tscn" id="3_2ero0"]
+[ext_resource type="PackedScene" uid="uid://da4c238bqghc6" path="res://game_manager.tscn" id="4_nx021"]
+[ext_resource type="PackedScene" uid="uid://bw0goy5lad78s" path="res://egg.tscn" id="5_hyu6t"]
+[ext_resource type="PackedScene" uid="uid://s70k3jdqaucg" path="res://ball.tscn" id="6_ip3m4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w4a6x"]
 texture = ExtResource("1_fukm1")
@@ -117,3 +120,10 @@ position = Vector2(304, 304)
 [node name="paddle" parent="." instance=ExtResource("3_2ero0")]
 z_index = 1
 position = Vector2(64, 304)
+
+[node name="GameManager" parent="." instance=ExtResource("4_nx021")]
+
+[node name="Egg" parent="." instance=ExtResource("5_hyu6t")]
+
+[node name="RigidBody2D" parent="." instance=ExtResource("6_ip3m4")]
+position = Vector2(105, 303)
