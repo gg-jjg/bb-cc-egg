@@ -8,7 +8,9 @@ func _physics_process(delta):
 	if collision:
 		if collision.get_collider().name == "Egg":
 			collision.get_collider().score()
-			speed +=0.1
+			#collision.get_collider().scale -= Vector2(0.05,0.05)
+			speed +=0.1 #speed up the ball every time it hits the egg
+			print("Speed: "+ str(speed))
 		dir = dir.bounce(collision.get_normal())
 		#dir = collision.get_normal()+dir/2
 
