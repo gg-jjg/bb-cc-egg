@@ -5,8 +5,8 @@ var score = 0
 
 func addScore(points):
 	score += points
-	print(score)
-	scoreText.text = str(score)
+	print("Score: " + str(score))
+	scoreText.text = "Score: " + str(score)
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("space"):

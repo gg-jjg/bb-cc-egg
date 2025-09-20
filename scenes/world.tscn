@@ -124,13 +124,14 @@ position = Vector2(64, 304)
 [node name="GameManager" parent="." instance=ExtResource("4_nx021")]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameManager"]
-offset_left = 291.0
-offset_top = 115.0
-offset_right = 331.0
-offset_bottom = 155.0
-text = "0"
+offset_left = 27.0
+offset_top = 30.0
+offset_right = 289.0
+offset_bottom = 98.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Score: "
 
 [node name="Egg" parent="." instance=ExtResource("5_hyu6t")]
 
 [node name="RigidBody2D" parent="." instance=ExtResource("6_ip3m4")]
-position = Vector2(105, 303)
+position = Vector2(105, 298)
