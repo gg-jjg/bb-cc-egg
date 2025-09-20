@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://t4lgur4n4wg2"]
 
-[ext_resource type="Script" path="res://scenes/ball_shooter.gd" id="1_at65o"]
+[ext_resource type="Script" path="res://scripts/ball_shooter.gd" id="1_at65o"]
 [ext_resource type="Texture2D" uid="uid://2a83ql5dmgtm" path="res://icon.svg" id="2_4evr0"]
 
 [node name="Node2D" type="Node2D"]

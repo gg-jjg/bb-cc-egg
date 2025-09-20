@@ -4,7 +4,7 @@ var speed = 1 #initial speed of the ball
 var speedMod = 0.5 #speed modifier, used for logarithmic speed increase
 var dir : Vector2 = Vector2(1.0, 0.0) #set initial direction, otherwise the ball will just sit there when you press play
 
-var chick = preload("res://chick.tscn")
+var chick = preload("res://scenes/chick.tscn")
 func _physics_process(delta):
 	var collision = move_and_collide(dir*speed) #move in a direction, doing physics collision calculations.
 	
