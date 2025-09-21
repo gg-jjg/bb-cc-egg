@@ -6,14 +6,36 @@
 position = Vector2(0, 672)
 script = ExtResource("1_r8gyj")
 
-[node name="Score" type="RichTextLabel" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -45.0
-offset_right = 608.0
+offset_left = 20.0
+offset_top = -44.0
+offset_right = 609.0
 grow_vertical = 0
-size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Score" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[color=black]Score: "
+text = "[color=black]Score: 0"
+
+[node name="Health" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[color=black]Health: 10 / 10"
+
+[node name="Stage" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[color=black]Stage: 1"
+
+[node name="Crack" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[color=black]Cracks: 0"

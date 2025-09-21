@@ -13,3 +13,13 @@ texture = ExtResource("2_pjtbm")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(4, -82, 13, -79, 26, -72, 35, -64, 46, -52, 61, -23, 67, -2, 70, 16, 70, 38, 61, 62, 51, 71, 38, 80, 23, 85, 7, 89, -10, 89, -26, 85, -43, 76, -62, 59, -68, 46, -71, 28, -67, 4, -61, -19, -52, -39, -44, -52, -31, -68, -18, -76, -5, -82)
+
+[node name="Stage" type="RichTextLabel" parent="."]
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[color=black]Stage: 1"
+
+[node name="Crack" type="RichTextLabel" parent="."]
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[color=black]Cracks: 0"

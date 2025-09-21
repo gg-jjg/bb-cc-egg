@@ -2,10 +2,12 @@ extends StaticBody2D
 
 # Sound fx
 @onready var audio_player = $"../MJ_Randomizer"
+
 var mj_egg = [preload("res://assets/sfx/mj/yeah-yeah.mp3"),	preload("res://assets/sfx/mj/yeeah.mp3")]
 var mj_egg_pop = [preload("res://assets/sfx/mj/hoow.mp3"), preload("res://assets/sfx/mj/hee-hee.mp3")]
 
 @onready var gm = $"../GameManager" #get reference to the game manager
+
 var stages = [13,8,5,3,2,1,1] #[1,1,1,1,1,1,1]#set up stages, each determines how many hits before going to the next. 
 var stage = 0 #stage (index of stages)
 var crackCount = 0 
@@ -37,6 +39,7 @@ func _ready():
 	#if scale < Vector2.ONE:
 		#scale += Vector2(0.0002,0.0002)
 		
+		
 func pop_egg(pos, dir):
 	
 	gm.addScore(10 * (stage + 1)) #increment score for game manager
@@ -44,11 +47,13 @@ func pop_egg(pos, dir):
 	if stage == stages.size(): #avoid getting an index out of range
 		return
 	
+	gm._update_crack_text(crackCount)
 	crackCount+=1
 	if crackCount >= stages[stage]: #if we've hit the egg enough, move on the the next stage.
 		_play_sound_fx(mj_egg_pop)
 		#print("Stage: " + str(stage))
-		stage +=1 #go to the next stage(index of stages)
+		stage +=1 #go to the next stage(index of stages
+		gm._update_stage_text(stage + 1)
 		crackCount=0 #reset the hit count
 		scale -= Vector2(0.14,0.14) #shrink the egg
 		rnd_egg_color() # Change color
