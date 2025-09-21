@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1ufh"]
 radius = 26.0
 
-[node name="RigidBody2D" type="StaticBody2D"]
+[node name="Ball" type="StaticBody2D"]
 position = Vector2(293, 284)
 script = ExtResource("1_yw75k")
 

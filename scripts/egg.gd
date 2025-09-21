@@ -41,7 +41,7 @@ func pop_egg(pos, dir):
 	
 	crackCount+=1
 	if crackCount >= stages[stage]: #if we've hit the egg enough, move on the the next stage.
-		print("Stage: " + str(stage))
+		#print("Stage: " + str(stage))
 		stage +=1 #go to the next stage(index of stages)
 		crackCount=0 #reset the hit count
 		scale -= Vector2(0.14,0.14) #shrink the egg
@@ -52,6 +52,7 @@ func pop_egg(pos, dir):
 	for i in num_chicks: #this is all used to spawn the 'chick' particles off of where the ball hits.
 		i+=1
 		var cspawn = chick.instantiate()
+		cspawn.name = "Chick" # For purposes of detecting collision
 		var rng = RandomNumberGenerator.new()
 		
 		# Basically, take the ball's bounce vector and randomize it so they all head in the same general direction but don't just follow the ball's path. Explosion!
