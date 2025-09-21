@@ -47,14 +47,15 @@ func pop_egg(pos, dir):
 	if stage == stages.size(): #avoid getting an index out of range
 		return
 	
-	gm._update_crack_text(crackCount)
 	crackCount+=1
+	gm._update_crack_text(crackCount)
 	if crackCount >= stages[stage]: #if we've hit the egg enough, move on the the next stage.
 		_play_sound_fx(mj_egg_pop)
 		#print("Stage: " + str(stage))
 		stage +=1 #go to the next stage(index of stages
 		gm._update_stage_text(stage + 1)
 		crackCount=0 #reset the hit count
+		gm._update_crack_text(crackCount)
 		scale -= Vector2(0.14,0.14) #shrink the egg
 		rnd_egg_color() # Change color
 	else:
