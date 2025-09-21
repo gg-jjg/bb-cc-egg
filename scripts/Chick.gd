@@ -3,7 +3,11 @@ extends PhysicsBody2D
 @onready var dir : Vector2
 @onready var gm = $"../GameManager" #get reference to the game manager
 
-var speed = 3
+# Sound fx
+@onready var audio_player = $"../MJ_Randomizer"
+var mj_pain = [preload("res://assets/sfx/mj/daaw.mp3"), preload("res://assets/sfx/mj/ooow.mp3")]
+
+var speed = 6
 
 func _ready():
 	self.name = "Chick"
@@ -20,8 +24,13 @@ func _physics_process(delta):
 	var collision = move_and_collide(dir * speed * delta, true)
 	
 	if collision:
-		print(self.name, " collides with : ", collision.get_collider().name)
+		#print(self.name, " collides with : ", collision.get_collider().name)
 		if collision.get_collider().name == "Paddle":
+			# Pain sound!
+			var sound = mj_pain[randi() % mj_pain.size()]
+			audio_player.stream = sound
+			audio_player.play()
+			
 			gm.subHealth(1) #print("Ouch")
 			gm.addScore(-1) #print("Score")
 			queue_free()

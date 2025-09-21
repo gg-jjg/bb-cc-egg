@@ -1,7 +1,12 @@
 extends StaticBody2D
 
+# Sound fx
+@onready var audio_player = $"../MJ_Randomizer"
+var mj_egg = [preload("res://assets/sfx/mj/yeah-yeah.mp3"),	preload("res://assets/sfx/mj/yeeah.mp3")]
+var mj_egg_pop = [preload("res://assets/sfx/mj/hoow.mp3"), preload("res://assets/sfx/mj/hee-hee.mp3")]
+
 @onready var gm = $"../GameManager" #get reference to the game manager
-var stages = [5,3,3,2,2,2,1] #[1,1,1,1,1,1,1]#set up stages, each determines how many hits before going to the next. 
+var stages = [13,8,5,3,2,1,1] #[1,1,1,1,1,1,1]#set up stages, each determines how many hits before going to the next. 
 var stage = 0 #stage (index of stages)
 var crackCount = 0 
 var chick = preload("res://scenes/chick.tscn")
@@ -41,14 +46,18 @@ func pop_egg(pos, dir):
 	
 	crackCount+=1
 	if crackCount >= stages[stage]: #if we've hit the egg enough, move on the the next stage.
+		_play_sound_fx(mj_egg_pop)
 		#print("Stage: " + str(stage))
 		stage +=1 #go to the next stage(index of stages)
 		crackCount=0 #reset the hit count
 		scale -= Vector2(0.14,0.14) #shrink the egg
 		rnd_egg_color() # Change color
+	else:
+		_play_sound_fx(mj_egg)
+		
 	
 	
-	var num_chicks = 3 * (stage + 1) # Spawn the chick particles - progressively more particles spawn as eggs pop
+	var num_chicks = 3 * (stage + crackCount) # Spawn the chick particles - progressively more particles spawn as eggs pop
 	for i in num_chicks: #this is all used to spawn the 'chick' particles off of where the ball hits.
 		i+=1
 		var cspawn = chick.instantiate()
@@ -56,7 +65,12 @@ func pop_egg(pos, dir):
 		var rng = RandomNumberGenerator.new()
 		
 		# Basically, take the ball's bounce vector and randomize it so they all head in the same general direction but don't just follow the ball's path. Explosion!
-		cspawn.dir = Vector2(rng.randf_range(0.05*sign(dir.x), 0.30*sign(dir.x)),rng.randf_range(0.05*sign(dir.y), 0.30*sign(dir.y)))
+		cspawn.dir = Vector2(rng.randf_range(0.05*sign(dir.x), 0.40*sign(dir.x)),rng.randf_range(0.05*sign(dir.y), 0.40*sign(dir.y)))
 		
 		cspawn.global_position = pos
 		get_tree().current_scene.add_child(cspawn)
+
+func _play_sound_fx(sound_array):
+	var sound = sound_array[randi() % sound_array.size()]
+	audio_player.stream = sound
+	audio_player.play()
