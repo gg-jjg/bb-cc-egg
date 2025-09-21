@@ -71,7 +71,7 @@ func pop_egg(pos, dir):
 		var rng = RandomNumberGenerator.new()
 		
 		# Basically, take the ball's bounce vector and randomize it so they all head in the same general direction but don't just follow the ball's path. Explosion!
-		cspawn.dir = Vector2(rng.randf_range(0.05*sign(dir.x), 0.40*sign(dir.x)),rng.randf_range(0.05*sign(dir.y), 0.40*sign(dir.y)))
+		cspawn.direction = Vector2(rng.randf_range(0.05*sign(dir.x), 0.40*sign(dir.x)),rng.randf_range(0.05*sign(dir.y), 0.40*sign(dir.y)))
 		
 		cspawn.global_position = pos
 		get_tree().current_scene.add_child(cspawn)

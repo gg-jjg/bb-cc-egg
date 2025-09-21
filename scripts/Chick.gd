@@ -1,6 +1,6 @@
 extends PhysicsBody2D
 
-@onready var dir : Vector2
+@onready var direction : Vector2
 @onready var gm = $"../GameManager" #get reference to the game manager
 
 # Sound fx
@@ -20,8 +20,8 @@ func _ready():
 	_set_timer_with_arg(seconds, "destroy")
 
 func _physics_process(delta):
-	position += dir * speed #move chick in a direction every physics frame. Direction determined by the Ball object when chick is spawned
-	var collision = move_and_collide(dir * speed * delta, true)
+	position += direction * speed #move chick in a direction every physics frame. Direction determined by the Ball object when chick is spawned
+	var collision = move_and_collide(direction * speed * delta, true)
 	
 	if collision:
 		#print(self.name, " collides with : ", collision.get_collider().name)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dvyac0wubpwgl"]
 
-[ext_resource type="Script" path="res://scripts/chick.gd" id="1_spyx1"]
+[ext_resource type="Script" path="res://scripts/Chick.gd" id="1_m70r1"]
 [ext_resource type="Texture2D" uid="uid://k7r4nb03e8pu" path="res://assets/sprites/Chick.png" id="2_sbven"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rt3d6"]
@@ -58,7 +58,7 @@ radius = 7.0
 
 [node name="Chick" type="StaticBody2D"]
 collision_layer = 0
-script = ExtResource("1_spyx1")
+script = ExtResource("1_m70r1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -5)
