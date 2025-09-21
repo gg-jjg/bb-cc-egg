@@ -1,6 +1,8 @@
 extends PhysicsBody2D
 
 @onready var dir : Vector2
+@onready var gm = $"../GameManager" #get reference to the game manager
+
 var speed = 3
 
 func _ready():
@@ -20,10 +22,11 @@ func _physics_process(delta):
 	if collision:
 		print(self.name, " collides with : ", collision.get_collider().name)
 		if collision.get_collider().name == "Paddle":
-			print("Ouch")
+			gm.subHealth(1) #print("Ouch")
+			gm.addScore(-1) #print("Score")
 			queue_free()
 		elif collision.get_collider().name == "Ball":
-			print("Score")
+			gm.addScore(2) #print("Score")
 			queue_free()
 
 func _set_timer_with_arg(n, arg):

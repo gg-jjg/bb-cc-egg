@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @onready var gm = $"../GameManager" #get reference to the game manager
-var stages = [1,1,1,1,1,1,1]#[5,3,3,2,2,2,1] #set up stages, each determines how many hits before going to the next. 
+var stages = [5,3,3,2,2,2,1] #[1,1,1,1,1,1,1]#set up stages, each determines how many hits before going to the next. 
 var stage = 0 #stage (index of stages)
 var crackCount = 0 
 var chick = preload("res://scenes/chick.tscn")
@@ -34,7 +34,7 @@ func _ready():
 		
 func pop_egg(pos, dir):
 	
-	gm.addScore(1) #increment score for game manager
+	gm.addScore(10 * (stage + 1)) #increment score for game manager
 	
 	if stage == stages.size(): #avoid getting an index out of range
 		return
@@ -48,7 +48,7 @@ func pop_egg(pos, dir):
 		rnd_egg_color() # Change color
 	
 	
-	var num_chicks = 2 * (stage + 1) # Spawn the chick particles - progressively more particles spawn as eggs pop
+	var num_chicks = 3 * (stage + 1) # Spawn the chick particles - progressively more particles spawn as eggs pop
 	for i in num_chicks: #this is all used to spawn the 'chick' particles off of where the ball hits.
 		i+=1
 		var cspawn = chick.instantiate()
