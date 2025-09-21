@@ -1,9 +1,23 @@
 extends PhysicsBody2D
 
+@onready var audio_player = $"../MJ_Randomizer"
+
 var speed = 100 #initial speed of the ball
 var speedMod = 5 #speed modifier, used for logarithmic speed increase
 var dir : Vector2 = Vector2(1.0, randf_range(-0.3, 0.3)) #set initial direction, rand y
 
+var mj_sounds = [
+	preload("res://assets/sfx/mj/ah-chuk-aah.mp3"),
+	preload("res://assets/sfx/mj/daaw.mp3"),
+	preload("res://assets/sfx/mj/dah.mp3"),
+	preload("res://assets/sfx/mj/duh-ah.mp3"),
+	preload("res://assets/sfx/mj/hee-hee.mp3"),
+	preload("res://assets/sfx/mj/hoow.mp3"),
+	preload("res://assets/sfx/mj/ooow.mp3"),
+	preload("res://assets/sfx/mj/shukka-chukka.mp3"),
+	preload("res://assets/sfx/mj/yeah-yeah.mp3"),
+	preload("res://assets/sfx/mj/yeeah.mp3")
+]
 
 func _physics_process(delta):
 	var collision = move_and_collide(dir * speed * delta) #move in a direction, doing physics collision calculations.
@@ -23,6 +37,11 @@ func _physics_process(delta):
 			
 		elif collision.get_collider().name == "Paddle": # Disable collision with paddle to handle janky behavior
 			disable_collision_with_paddle()
+			var sound = mj_sounds[randi() % mj_sounds.size()]
+			#print(audio_player)
+			audio_player.stream = sound
+			audio_player.play()
+			
 	elif collision:
 		pass
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cw8cds2jy2281"]
+[gd_scene load_steps=27 format=3 uid="uid://cw8cds2jy2281"]
 
 [ext_resource type="Texture2D" uid="uid://b262bh247wnvw" path="res://assets/sprites/ground_tiles.png" id="1_fukm1"]
 [ext_resource type="Texture2D" uid="uid://b6g40mh7da3ml" path="res://assets/sprites/objects.png" id="2_j7kdx"]
@@ -8,6 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://da4c238bqghc6" path="res://scenes/game_manager.tscn" id="4_nx021"]
 [ext_resource type="PackedScene" uid="uid://bw0goy5lad78s" path="res://scenes/egg.tscn" id="5_hyu6t"]
 [ext_resource type="PackedScene" uid="uid://s70k3jdqaucg" path="res://scenes/ball.tscn" id="6_ip3m4"]
+[ext_resource type="AudioStream" uid="uid://cxqf0cqkbx2rn" path="res://assets/sfx/mj/ah-chuk-aah.mp3" id="9_va2a1"]
+[ext_resource type="AudioStream" uid="uid://ygi87dbs4brf" path="res://assets/sfx/mj/daaw.mp3" id="10_gf5pf"]
+[ext_resource type="AudioStream" uid="uid://bm366avdy4rav" path="res://assets/sfx/mj/dah.mp3" id="11_yttfn"]
+[ext_resource type="AudioStream" uid="uid://k3jirdnaarfv" path="res://assets/sfx/mj/duh-ah.mp3" id="12_al2hr"]
+[ext_resource type="AudioStream" uid="uid://chu48f35lc6rb" path="res://assets/sfx/mj/hee-hee.mp3" id="13_dm3l2"]
+[ext_resource type="AudioStream" uid="uid://ddftxhabkr361" path="res://assets/sfx/mj/hoow.mp3" id="14_mgnjy"]
+[ext_resource type="AudioStream" uid="uid://doilg3aqc58up" path="res://assets/sfx/mj/ooow.mp3" id="15_p0m8m"]
+[ext_resource type="AudioStream" uid="uid://cuvtwfeekoexl" path="res://assets/sfx/mj/shukka-chukka.mp3" id="16_0vdvi"]
+[ext_resource type="AudioStream" uid="uid://dvbslf16hlqrc" path="res://assets/sfx/mj/yeah-yeah.mp3" id="17_70o7f"]
+[ext_resource type="AudioStream" uid="uid://b33wipcgtrxbq" path="res://assets/sfx/mj/yeeah.mp3" id="18_srv4p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w4a6x"]
 texture = ExtResource("1_fukm1")
@@ -291,6 +301,30 @@ texture = ExtResource("3_1r5jo")
 [sub_resource type="TileSet" id="TileSet_2yu4j"]
 sources/0 = SubResource("TileSetAtlasSource_d0a63")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_64pu4"]
+playback_mode = 1
+streams_count = 10
+stream_0/stream = ExtResource("9_va2a1")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_gf5pf")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_yttfn")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("12_al2hr")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("13_dm3l2")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("14_mgnjy")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("15_p0m8m")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("16_0vdvi")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("17_70o7f")
+stream_8/weight = 1.0
+stream_9/stream = ExtResource("18_srv4p")
+stream_9/weight = 1.0
+
 [node name="world" type="Node2D"]
 
 [node name="Ground" type="TileMap" parent="."]
@@ -332,3 +366,7 @@ position = Vector2(64, 304)
 
 [node name="Ball" parent="." instance=ExtResource("6_ip3m4")]
 position = Vector2(105, 298)
+
+[node name="MJ_Randomizer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_64pu4")
+bus = &"SFX"
